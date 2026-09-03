@@ -2,14 +2,37 @@
 version: 1
 project:
   id: 28f07ee5-cbbe-40fa-a3f0-cd5f5d72262d
-  # title:
+  title: Appunti di Informatica
   # description:
   # keywords: []
-  # authors: []
-  # github:
+  authors: [ProfSchimd]
+  github: https://github.com/ProfSchimd
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+  toc:
+    - file: README.md
+    # - title: Terzo anno
+    #   file: 3/terzoanno.md
+    - title: Quarto Anno
+      file: 4/quartoanno.md
+      children:
+        - title: Strutture dati
+          children:
+            - title: Liste
+              file: 4/strutture/liste.md
+            - title: Alberi
+              file: 4/strutture/alberi.md
+            - title: Grafi
+              file: 4/strutture/grafi.md
+    - title: Quinto anno
+      file: 5/quintoanno.md
+      children:
+        - title: La gestione dei dati
+          children:
+            - file: 5/01/informazione.md
+            - file: 5/01/elaborazione.md
+
 site:
   template: book-theme
-  # options:
-  #   favicon: favicon.ico
-  #   logo: site_logo.png
+  options:
+    favicon: favicon.ico
+    logo: favicon.ico
