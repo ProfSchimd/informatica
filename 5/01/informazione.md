@@ -17,7 +17,7 @@ Un **dato** è un "fatto", ovvero una *misurazione* di una quantità che può es
 Vediamo alcuni esempi di dati, indicando quali quantità descrivono. * Temperatura atmosferica in una data località, la quantità (fisica) misurata è proprio la temperatura ad esempio attraverso *termometri intelligenti* oppure sensori collegati a dispositivi (esempio Arduino, Raspberry). 
 [Esempio  JSON temperatura Venezia](https://dati.venezia.it/sites/default/files/dataset/opendata/temparia.json)
 
-* Valore di mercato del *bitcoin*, la quantità (non fisica) misurata è il prezzo (in dollari) di un bitcoin. [Esempio JSON valore bitcoin](https://api.coindesk.com/v1/bpi/currentprice.json)
+* Valore di mercato del *bitcoin*, la quantità (non fisica) misurata è il prezzo (in dollari) di un bitcoin. [Esempio JSON valore bitcoin](https://api-pub.bitfinex.com/v2/ticker/tBTCUSD)
 
 * Commenti ad un post su Instagram, la quantità (non fisica) misurata è il *testo* che uno specifico utente ha voluto associare ad un post.
 
@@ -40,6 +40,7 @@ App Amazon:     Recensione Scarpe,                    Dato personale altrui
 Fermata tram:   orario del T1,                        Dato non personale.
 ```
 
+I dati sono sostanzialmente delle misurazioni dalle quali otteniamo numeri o stringhe. Un dato in isolamento non dice molto, ad esempio il numero 21 ha poco significato se ci viene comunicato al di fuori di un contesto. Un dato diventa significativo che sappiamo a cosa si riferisce, in quel momento il dato diventa significativo e possiamo dire di aver ottenuto dell'informazione. Il concetti di informazione è stato ampiamente studiato e nella prossima sezione scopriremo come viene oggi trattato in termini matematici.
 
 ## Informazione
 
@@ -53,7 +54,7 @@ Alla base della teoria sull'informazione di Shannon c'è il concetto matematico 
 
 Come è noto la distribuzione discreta più semplice è quella che comprende due esiti possibili, solitamente si fa riferimento ad una *moneta a due facce*, una faccia marcata con il simbolo `Testa`, l'altra marcata con il simbolo `Croce`. Il caso che viene subito in mente è quello di una moneta non truccata (*unbiased*) in cui la probabilità che esca `Testa` è uguale alla probabilità che esca `Croce`, $p_{Testa} = p_{Croce} = 1/2$ (queste due probabilità, ovviamente, sono entrambe $1/2$)
 
-Quando gli *eventi* sono più di due, anziché indicare dei nomi si possono numerare, perciò se abbiamo 5 eventi possiamo indicare con $p_1,p_2,\ldots p_5 $ le loro rispettive probabilità. Ad esempio un dado a sei facce che non sia truccato avremo 6 probabilità (una per faccia) $p_1, \ldots p_6$ e tutte avranno lo stesso valore $p_i=1/6$.
+Quando gli *eventi* sono più di due, anziché indicare dei nomi si possono numerare, perciò se abbiamo 5 eventi possiamo indicare con $p_1,p_2,\ldots p_5 $ le loro rispettive probabilità. Ad esempio in un dado a sei facce che non sia truccato avremo 6 probabilità (una per faccia) $p_1, \ldots, p_6$ e tutte avranno lo stesso valore $p_i=1/6$.
 
 Prima di osservare un evento aleatorio (es. prima di scoprire la faccia che è uscita dopo il lancio della moneta), abbiamo incertezza su quello che potrebbe essere l'*esito*, quando ci viene comunicato tale esito, allora acquisiamo dell'informazione, quanta? Shannon sostiene che se osserviamo l'esito $i$ che ha probabilità $p_i$, allora l'informazione che abbiamo da questa osservazione è
 
@@ -82,35 +83,39 @@ $$ H = -6\left(\frac{1}{6}\log_2{\frac{1}{6}}\right) = -\log_2{\frac{1}{6}} = 2,
 $$ H = -\left(\frac{2}{3}\log_2{\frac{2}{3}} +\frac{1}{3}\log_2{\frac{1}{3}} \right) = 0,918 \ bit$$
 :::
 
+```{note} Osserva
+Il concetto di informazione introdotto da Shannon non dice nulla sugli eventi specifici, ma si riferisce solo alla loro probabilità. Ad esempio $1/2$ può essere la probabilità che esca `Testa`, la probabilità di ottenere un numero pari su un dado a sei facce o la probabilità che domani ci sia la pioggia. 
+```
+
 
 ## Dati e computer
-Il concetto di informazione descritto sopra è un concetto *astratto* nel senso che non descrive nulla di "fisico". Di fatto l'informazione non è una cosa fisica, tuttavia viene mantenuta (scritta e letta) in **supporti fisici**. Per esempio i giornali cartacei sono dei supporti fisici per le notizie del giorno, mentre altri supporti quali i vinili contengono informazione sonora.
+Il concetto di informazione descritto sopra è un concetto *astratto* nel senso che non descrive nulla di “fisico”. Di fatto l'informazione non è una cosa fisica, tuttavia viene mantenuta (scritta e letta) in **supporti fisici**. Per esempio i giornali cartacei sono dei supporti fisici per le notizie del giorno, mentre altri supporti quali i dischi in vinile contengono informazione sonora.
 
-In un computer moderno, il supporto fisico può essere di vario tipo (ad esempio transistor o
+In un sistema di calcolo, il supporto fisico può essere di vario tipo (ad esempio transistor o
 supporti magnetizzati). Quello che permette l'utilizzo di supporti diversi è il fatto che questi
-devono "solamente" memorizzate **bit** (valori binari `0` o `1`, `Alto` o `Basso`, `Positivo` o
+devono “solamente” memorizzate **bit** (valori binari `0` o `1`, `Alto` o `Basso`, `Positivo` o
 `Negativo`, ...). D'altra parte un'informazione che si voglia memorizzare in un computer, deve
-poter essere tradotta in una sequenza di bit altrimenti non si possono usare i supporti di
+poter essere tradotta in una sequenza di bit, altrimenti non si possono usare i supporti di
 memorizzazione presenti in un computer. La **digitalizzazione** è l'operazione che porta in
 *formato digitale* (cioè in numeri, *digit*, che poi possiamo tradurre in *binary digit*) l'informazione.
 
 Riassumendo:
 * I computer sono in grado di elaborare **bit** utilizzando diversi **supporti fisici**;
-* L'informazione deve essere **digitalizzata** affinché sia possibile elaborarla con un PC;
+* L'informazione deve essere **digitalizzata** affinché sia possibile elaborarla con un PC.
 
 ### Esempi di *digitalizzazione*
 Vediamo alcuni esempi di digitalizzazione di informazione.
 
 **Testo**
 Il testo in una lingua naturale (es. italiano, inglese, giapponese, ...) può essere visto come
-una sequenza di *carattere* uno dopo l'altro. Ad esempio, la parola `casa` è composta dai
+una sequenza di *carattere* . Ad esempio, la parola `casa` è composta dai
 caratteri `c`, `a`, `s`, `a`; la parola `home` dai caratteri `h`, `o`, `m`, `e` e la parola
 `家` (casa in giapponese, secondo Google traduttore) dall'unico ideogramma `家`.
 
 Anche all'interno di un computer un testo è rappresentato con una sequenza di caratteri solo
 che ogni carattere è a sua volta rappresentato da una sequenza di bit secondo una specifica
 **codifica**. Le due codifiche più utilizzate oggi sono [ASCII](https://en.wikipedia.org/wiki/ASCII)
- (7 o 8 bit se si usa *extended ASCII*) e [Unicode](https://en.wikipedia.org/wiki/Unicode) (che contiene ASCII). Ad esempio il 
+ (7 o 8 bit se si usa *extended ASCII*) e [Unicode](https://en.wikipedia.org/wiki/Unicode) (che include al suo interno ASCII). Ad esempio il 
  carattere `c` (minuscolo) in ASCII è rappresentato dagli 8 bit `01100011`, allo stesso modo
  altri caratteri hanno una *codifica* in bit e la parola `casa` è codificata dai
  seguenti `32` bit (`8` bit per ognuno dei caratteri) 
@@ -131,16 +136,22 @@ giapponese `家` è `5BB6` esadecimale che corrisponde ai seguenti bit
 
 
 **Immagine**
-Per rappresentare un'immagine si usano i cosiddetti *pixel*, piccoli punti (in realtà
+Per rappresentare un'immagine si usano *pixel*, piccoli punti (in realtà
 quadrati microscopici) colorati. Ad esempio un'immagine con 50 Megapixel, è composta
 di circa 50 milioni di puntini colorati. Organizzando questi punti in *righe* e *colonne*
 si ottiene un'immagine digitale. 
 
-Per rappresentare sotto forma di bit un'immagine basta rappresentare "uno dopo l'altro" i
-pixel. Ad esempio partendo dalla prima riga, poi la seconda e così via, si "elencano" i
+```{figure} https://upload.wikimedia.org/wikipedia/commons/2/2b/Pixel-example.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
+
+Dettaglio di un immagine che mostra la suddivisione in pixel dell'immagine stessa (Fonte [Wikimedia](https://commons.wikimedia.org/wiki/File:Pixel-example.png))
+```
+
+
+Per rappresentare sotto forma di bit un'immagine possiamo rappresentare “uno dopo l'altro” i suoi
+pixel. Ad esempio partendo dalla prima riga, poi la seconda e così via, si “elencano” i
 pixel (primo pixel della prima riga, secondo pixel della seconda riga, ...). Rimane quindi
 il problema di rappresentare con dei bit il *colore* di un pixel. Lo standard di rappresentazione
-dei colori è tramite la terna **RGB** (sigla che indica **R**ed, **G**reen, **B**lue)
+dei colori è la codifica **RGB** (sigla che indica **R**ed, **G**reen, **B**lue)
 dando un'*intensità* per ognuno di dei tre colori fondamentali: rosso, verde e blu. Tale intensità
 viene rappresentata tramite numeri da 0 (assenza completa del color) a 255 (saturazione massima
 del colore). Dal momento che per rappresentare numeri da 0 a 255 servono 8 bit, ogni
@@ -166,7 +177,7 @@ viene chiamata *raster* perché descrive esattamente i pixel dell'immagine (ad e
 formati `bmp` e `tiff` sono formati raster). Spesso, per evitare eccessivo utilizzo di spazio
 e/o *banda*, le immagini vengono memorizzate e scambiate in formato *lossy* (cioè con
 perdita di informazione). Ad esempio il formato `jpeg` è un formato lossy molto diffuso che
-*comprime* le informazione a scapito della qualità.
+*comprime* l'informazione sacrificando qualità.
 
 ## Sistema informativo
 Il **sistema informativo aziendale** è l'insieme di tutti gli elementi informatici e non che permettono di gestire l'informazione (i dati) all'interno di un'organizzazione (azienda, ente pubblico, ...). 
