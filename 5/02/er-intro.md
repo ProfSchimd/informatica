@@ -1,10 +1,10 @@
 # Diagramma Entità-Relazione (ER)
 
-Questa lezione introduce il **Diagramma Entità-Relazione (ER)** per la *progettazione concettuale di un database* utilizzando un semplice esempio di *analisi dei requisiti*. Verranno discussi i concetti di [entità](#entity) e [relazione](#relation)che saranno approfonditi in lezioni successive.
+Questa lezione introduce il **Diagramma Entità-Relazione (ER)** per la *progettazione concettuale di un database* utilizzando un semplice esempio di *analisi dei requisiti*. Verranno discussi i concetti di [entità](#entity) e [relazione](#relation) che saranno approfonditi in lezioni successive.
 
-{{<example title="Estratto di analisi dei requisiti">}}
+```{tip} Esempio: “Estratto di un'analisi dei requisiti”
 Si deve creare un *registro elettronico* per la gestione delle classi all'interno di una scuola superiore. Ogni classe è composta di studenti i quali sono identificati per mezzo del loro codice fiscale. Ogni classe ha un nome (ad esempio `1A`) suddiviso in sezione e livello. Oltre al codice fiscale, agli studenti sono associati nome, cognome, data di nascita, indirizzo di casa e numero di telefono dello studente (opzionale).
-{{</example>}}
+```
 
 (entity)=
 ## Entità e attributi
@@ -47,7 +47,7 @@ Nell'immagine sopra l'entità `Studente` contiene un attributo `Data di Nascita`
 Nel modello relazionale gli attributi devono essere atomici e non possono essere composti. Nella progettazione concettuale, quindi nello schema ER, questo non è necessario. Se un attributo è composto, come `Data di Nascita` per l'entità `Studente`, esso va rappresentato come tale. Nella fase di traduzione da modello concettuale a modello logico relazionale si dovrà rendere atomici gli attributi composti.
 ```
 
-### La relazione `Classe`
+### L'entità `Classe`
 
 Per completare il nostro esempio introduciamo una seconda entità che chiamiamo `Classe`. Questa entità rappresenta il *gruppo classe* (ad esempio la `2A`), il suo schema ER è presentato sotto.
 ```{figure} /5/img/entity-classe.svg

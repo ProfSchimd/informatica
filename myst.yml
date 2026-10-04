@@ -31,10 +31,12 @@ project:
             - file: 5/01/informazione.md
             - file: 5/01/dati.md
             - file: 5/01/elaborazione.md
-        - title: Diagramma Concettuale
+        - title: Progettazione Concettuale
           children:
             - file: 5/02/concettuale.md
             - file: 5/02/er-intro.md
+            - file: 5/02/er-cardinalita.md
+            - file: 5/02/er-concetti-avanzati.md
 
 site:
   template: book-theme
