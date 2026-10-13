@@ -37,6 +37,12 @@ project:
             - file: 5/02/er-intro.md
             - file: 5/02/er-cardinalita.md
             - file: 5/02/er-concetti-avanzati.md
+        - title: Modello Relazionale
+          file: 5/03/relazionale-intro.md
+          children:
+            - file: 5/03/relazioni-tuple.md
+            - file: 5/03/chiavi-integrita.md
+            - file: 5/03/algebra-relazionale.md
 
 site:
   template: book-theme

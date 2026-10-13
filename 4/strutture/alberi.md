@@ -284,6 +284,7 @@ Partendo dall'implementazione di `ITreeNode`, realizzare un'implementazione dell
 4. il figlio destro (`right`).
 ```
 
+(visite-di-un-albero)=
 ## Visite di un albero
 La **visita** (**visit**) di un albero è l'operazione che attraversa (visita)
 tutti i nodi esattamente una volta. Durante la visita viene effettuata qualche operazione per ciascun nodo visitato. Ad esempio potremmo stampare il contenuto. Data la struttura di un albero, sorge il problema dell'*ordine in cui visitare* i nodi.
@@ -318,6 +319,7 @@ In Java per usare qualsiasi `doOperation` (anche definito dal programmatore), si
 4. Sostituire `doOperation` con `do`.
 ```
 
+(pre-order)=
 ### Pre-order
 Nella visita **pre-order**, la prima cosa da fare è eseguire
 l'operazione sulla radice e poi, *ricorsivamente* eseguire l'operazione nei sottoalberi
@@ -336,6 +338,7 @@ public static void printPreOrder(IBinaryTreeNode node) {
 }
 ```
 
+(in-order)=
 ### In-order
 Nella visita **in-order**, la prima cosa da fare è visitare il sottoalbero
 sinistro, successivamente si visita la radice ed infine il sottoalbero destro.
@@ -353,7 +356,7 @@ public static void printInOrder(IBinaryTreeNode node) {
 }
 ```
 
-
+(post-order)=
 ### Post-order
 Nella visita **post-order** la prima cosa da fare è visitare i due sottoalberi
 (prima il sinistro poi il destro) e solo alla fine si visita la radice.
