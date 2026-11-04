@@ -43,6 +43,11 @@ project:
             - file: 5/03/relazioni-tuple.md
             - file: 5/03/chiavi-integrita.md
             - file: 5/03/algebra-relazionale.md
+        - title: SQL
+          file: 5/04/sql-intro.md
+        - title: Progettazione DB
+          children:
+            - file: 5/05/traduzione-er-logico.md
 
 site:
   template: book-theme
