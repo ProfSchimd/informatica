@@ -45,6 +45,20 @@ project:
             - file: 5/03/algebra-relazionale.md
         - title: SQL
           file: 5/04/sql-intro.md
+          children:
+            - title: Data Definition Language
+              children:
+                - file: 5/04/ddl-create.md
+                - file: 5/04/ddl-alter-drop.md
+                - file: 5/04/ddl-insert.md
+                - file: 5/04/ddl-update-delete.md
+            - title: Data Query Language
+              children:
+                - file: 5/04/dql-select-from.md
+                - file: 5/04/dql-where-order-by.md
+                - file: 5/04/dql-join.md
+                - file: 5/04/dql-group-by-having.md
+        
         - title: Progettazione DB
           children:
             - file: 5/05/traduzione-er-logico.md
